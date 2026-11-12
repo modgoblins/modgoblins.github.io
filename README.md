@@ -13,7 +13,7 @@ assets/mg-icon.png, mg-logo.webp, favicon.png   brand images
 <mod-folder>/admin/        admin guide (index.html + img/)
 ```
 
-Mod folders: `NL-cluster-market` (Cluster Market).
+Mod folders: `NL-cluster-market` (Cluster Market), `goblin-item-migration` (Goblin Item Migration).
 
 ## Adding a mod
 

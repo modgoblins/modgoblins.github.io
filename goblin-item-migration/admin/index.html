@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goblin Item Migration Admin guide — Mod Goblins Wiki</title>
+<meta name="description" content="How to migrate a tribe with Goblin Item Migration: scan, start, give the box, manage boxes and settings.">
+<link rel="icon" href="../../assets/favicon.png">
+<link rel="stylesheet" href="../../assets/site.css?v=9">
+</head>
+<body>
+<div class="sticky">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/mg-icon.png" alt="" width="40" height="40">Mod Goblins <small>Wiki</small></a>
+    <nav aria-label="Site">
+      <a href="../../">All mods</a>
+      <a href="https://discord.gg/modgoblins">Discord</a>
+    </nav>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="wrap">
+    <p class="crumbs"><a href="../../">All mods</a> / <a href="../">Goblin Item Migration</a> / Admin guide</p>
+    <h1>Goblin Item Migration — Admin guide</h1>
+  </div>
+</div>
+</div>
+<main class="wrap">
+  <div class="guide">
+    <nav class="toc" aria-label="On this page">
+      <div class="toc-in">
+      <strong>On this page</strong>
+      <ol>
+      <li><a href="#overview">How a migration works</a></li>
+      <li><a href="#open">Open the admin panel</a></li>
+      <li><a href="#players">Players</a></li>
+      <li><a href="#scan">Scan</a></li>
+      <li><a href="#start">Start a migration</a></li>
+      <li><a href="#what">What is migrated</a></li>
+      <li><a href="#boxes">Boxes</a></li>
+      <li><a href="#tasks">Tasks</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#logs">Logs</a></li>
+      <li><a href="#diag">Diagnostics and support</a></li>
+      <li><a href="#tips">Good to know</a></li>
+      </ol>
+      </div>
+    </nav>
+    <article>
+    <div class="intro">
+      <p class="lead">How to move a tribe or a player from one map to another, from the first scan to the box in their hands.</p>
+
+    </div>
+    <section class="sec" id="overview">
+    <h2>How a migration works</h2>
+    <ol class="steps">
+      <li><strong>Scan</strong> a tribe or a player on the map they are leaving. Nothing is changed.</li>
+      <li><strong>Start</strong> the migration. The server collects their items, removes them from the map and stores them.</li>
+      <li><strong>Give</strong> the box to its owner. They place it on any map of the cluster and take their items out.</li>
+    </ol>
+    <p>The mod needs no setup. Install it on every map of the cluster. Maps that share the same <code>-clusterid</code> and cluster folder share boxes, stored items and settings. A single server works the same way.</p>
+    <div class="note"><p>Do the migration on the map the items are on. The box can then be given and placed on any map.</p></div>
+    </section>
+    <section class="sec" id="open">
+    <h2>Open the admin panel</h2>
+    <ol class="steps">
+      <li>Log in as an ARK admin (<code>enablecheats</code>).</li>
+      <li>Hold your radial wheel key and pick the Goblin Item Migration entry.</li>
+    </ol>
+    <p>Only admins see the entry. The panel has five tabs: <strong>Players</strong>, <strong>Tasks</strong>, <strong>Settings</strong>, <strong>Logs</strong> and <strong>Diagnostics</strong>.</p>
+    </section>
+    <section class="sec" id="players">
+    <h2>Players</h2>
+    <p>Every player known in the cluster, online or offline. Type in the search box to filter, or choose All, Online or Offline. Each row shows the account ID and the player's characters with their maps.</p>
+    <p>Click a player to open their page. It has four tabs:</p>
+    <ul>
+      <li><strong>Maps:</strong> one row per map the player has a character on, with the tribe and the role there. A tribe owner or a player without a tribe has a <strong>Scan</strong> button. A tribe member is migrated from the owner's page; the row tells you whose.</li>
+      <li><strong>Scans:</strong> finished and running scans.</li>
+      <li><strong>Jobs:</strong> running and finished migrations.</li>
+      <li><strong>Boxes:</strong> the boxes of this player or tribe.</li>
+    </ul>
+    </section>
+    <section class="sec" id="scan">
+    <h2>Scan</h2>
+    <p>A scan counts what would be migrated. It changes nothing on the map.</p>
+    <ul>
+      <li>Items in player inventories and sleeping bodies, in structures, and on tamed creatures.</li>
+      <li>Resources in Tek Dedicated Storages and in counter-style storages from other mods, shown as a separate total.</li>
+      <li>Creatures that will go into cryopods, and creatures that will stay (ridden, dead, or not allowed in a cryopod).</li>
+      <li>What stays on the map: placed structures.</li>
+    </ul>
+    <p>Large tribes take a few minutes. The scan runs in small steps so the server keeps running. Scans are kept until you delete them or press <strong>Clear scans</strong>.</p>
+    </section>
+    <section class="sec" id="start">
+    <h2>Start a migration</h2>
+    <ol class="steps">
+      <li>On the <strong>Scans</strong> tab press <strong>Start</strong> on a finished scan.</li>
+      <li>Read the confirm window and confirm.</li>
+      <li>Follow the progress on the <strong>Jobs</strong> tab or on <strong>Tasks</strong>. You can close the panel or leave the game; the job runs on the server.</li>
+    </ol>
+    <ul>
+      <li>The map changes while people play, so the job counts again when it starts. A difference from the scan is shown, not treated as an error.</li>
+      <li>You can <strong>Cancel</strong> until removing starts. After that the job finishes.</li>
+      <li>An item is stored only after it was really removed from the map. An item that could not be removed stays on the map and is listed in the report.</li>
+      <li>If the server restarts during a job, the job continues after the restart from what is really on the map.</li>
+    </ul>
+    <div class="note"><p><strong>Items already waiting.</strong> If the tribe still has items waiting from an earlier migration of the same map, Start warns you and shows when they last took something. <strong>Continue</strong> adds the new items to the same box. <strong>Clear box first</strong> removes the waiting items; you must type CLEAR. Cleared items can be restored from the box page for the time set in <em>Keep cleared items</em>.</p></div>
+    </section>
+    <section class="sec" id="what">
+    <h2>What is migrated</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Migrated</th><th>Stays on the map</th></tr></thead>
+      <tbody>
+      <tr><td>Items in inventories of players (also sleeping), structures and tamed creatures</td><td>Placed structures</td></tr>
+      <tr><td>Tamed creatures on the map, in cryopods with their saddle</td><td>Creatures that are ridden, dead, or cannot enter a cryopod</td></tr>
+      <tr><td>Cryopods and Dino Depot balls with their creatures</td><td>Engrams</td></tr>
+      <tr><td>Contents of Tek Dedicated Storages and counter-style mod storages</td><td>Items the game does not allow to be dropped (bound skins, the implant)</td></tr>
+      <tr><td>Blueprints, Element, artifacts, tribute items, trophies, items of other mods</td><td>Wild creatures</td></tr>
+      </tbody>
+    </table></div>
+    <p>Resources that spoil (meat, berries) lose a little while a long job runs. The storage is emptied and the box receives the amount that was collected.</p>
+    </section>
+    <section class="sec" id="boxes">
+    <h2>Boxes</h2>
+    <p>The <strong>Boxes</strong> tab of a player lists their boxes: how many items and cards are waiting and the state of the box. Click a box to open its page.</p>
+    <ul>
+      <li><strong>Information:</strong> owner, source map, time left, where the box is placed, who may use it.</li>
+      <li><strong>Waiting items</strong> by category, to look at only.</li>
+      <li><strong>Give to:</strong> gives the box to its owner. If the owner is online on another map of the cluster, the box arrives there. If they are offline, it arrives when they join.</li>
+      <li><strong>Give me:</strong> gives the box to you, paused, so you can hand it over yourself.</li>
+      <li><strong>Change owner:</strong> assigns the box to another player or tribe.</li>
+      <li><strong>Time:</strong> add or remove hours and days, or set an exact time.</li>
+      <li><strong>Pick Up</strong> and <strong>Demolish</strong> work from any distance on a placed box. The stored items are not touched.</li>
+      <li><strong>Delete</strong> removes the box and keeps the items, so a new box can be given. <strong>Delete + items</strong> removes both.</li>
+      <li><strong>Restore cleared:</strong> brings back items removed with Clear box first.</li>
+    </ul>
+    <p>A tribe has one valid box per source map. Giving a new one makes the old one disappear.</p>
+    </section>
+    <section class="sec" id="tasks">
+    <h2>Tasks</h2>
+    <p>Every scan and migration running anywhere in the cluster, for all admins. Click a row to jump to that player's page.</p>
+    </section>
+    <section class="sec" id="settings">
+    <h2>Settings</h2>
+    <p>Settings apply to the whole cluster. Change the values and press <strong>Save</strong>. Leaving the tab with unsaved changes asks first.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Setting</th><th>What it does</th></tr></thead>
+      <tbody>
+      <tr><td>Placement time</td><td>How long a given box may stay unplaced. Starts when the box is given.</td></tr>
+      <tr><td>Use time</td><td>How long a placed box stays. Starts at the first placement.</td></tr>
+      <tr><td>Lifetime check period</td><td>How often the boxes' times are checked.</td></tr>
+      <tr><td>Box leaves after the last item</td><td>Delay before an empty box rises and explodes.</td></tr>
+      <tr><td>Tribe owners can change box access</td><td>On: the owner sees the gear button in the box window. Off: every box is owner only.</td></tr>
+      <tr><td>Storage scan interval</td><td>How often old box items left in storages are removed. 0 = only when a box is deleted.</td></tr>
+      <tr><td>Explosion effect</td><td>The box rises and explodes when it leaves.</td></tr>
+      <tr><td>Box sounds volume</td><td>Launch and explosion sounds, 0 to 100.</td></tr>
+      <tr><td>Notify the player when a box arrives</td><td>A notice on the player's screen.</td></tr>
+      <tr><td>Max waiting time for items without a box</td><td>Stored items whose box was never given are removed after this time.</td></tr>
+      <tr><td>Log retention</td><td>Log lines older than this many days are removed. 0 = no day limit; the newest 5000 lines stay.</td></tr>
+      <tr><td>Stop Take all at the weight limit</td><td>Take all and Take category stop when the player cannot carry more. A single Take always takes.</td></tr>
+      <tr><td>Dedicated storage range</td><td>How far from the box Send to Dedicated Storage looks for the tribe's storages, in meters. 0 = no limit.</td></tr>
+      <tr><td>Send to range</td><td>How far from the box Send to... looks for the tribe's structures, in meters. 0 = the whole map.</td></tr>
+      <tr><td>Save the world after a migration</td><td>Saves the map right after the items left it, so a crash cannot bring them back. The server pauses for a moment.</td></tr>
+      <tr><td>Keep cleared items</td><td>How long items removed with Clear box first can be restored.</td></tr>
+      </tbody>
+    </table></div>
+    </section>
+    <section class="sec" id="logs">
+    <h2>Logs</h2>
+    <p>What was done on this map: scans, migrations, boxes given, time changes, deletions, with the date, the tribe and the admin. The newest lines are on top. Old lines are removed by the <em>Log retention</em> setting.</p>
+    </section>
+    <section class="sec" id="diag">
+    <h2>Diagnostics and support</h2>
+    <ol class="steps">
+      <li>Open the <strong>Diagnostics</strong> tab and press <strong>Create</strong>.</li>
+      <li>Copy the link from the Link box.</li>
+      <li>Open a ticket in the Goblin Item Migration area of the <a href="https://discord.gg/modgoblins">Mod Goblins Discord</a> and add the link.</li>
+    </ol>
+    <p>The file holds the mod's own records of the last scans and jobs: what was taken, what was skipped and why. It has no passwords.</p>
+    </section>
+    <section class="sec" id="tips">
+    <h2>Good to know</h2>
+    <ul>
+      <li>Migrate while the tribe is offline if you can. Items that players move during a job are simply counted as they are at that moment.</li>
+      <li>A member of a tribe is migrated with the tribe, from the owner's page.</li>
+      <li>The mod uses only base-game content. No DLC is required.</li>
+      <li>Works on PC and consoles.</li>
+    </ul>
+    </section>
+    <nav class="pager" aria-label="Sections"></nav>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>Mod Goblins — mods for ARK: Survival Ascended</span>
+    <a href="https://discord.gg/modgoblins">Discord support</a>
+  </div>
+</footer>
+<script src="../../assets/site.js?v=5"></script>
+</body>
+</html>
