@@ -36,4 +36,4 @@ Never put mod code, passwords, webhook addresses or tokens in this repository; i
 
 ## Script
 
-`assets/site.js` shows one section at a time on guide pages (each "On this page" entry opens as its own view, with Previous / Next links). Guide pages load it at the end of `<body>`: `<script src="../../assets/site.js?v=3"></script>`.
+`assets/site.js` shows one section at a time on guide pages (each "On this page" entry opens as its own view, with Previous / Next links). Guide pages load it at the end of `<body>`: `<script src="../../assets/site.js?v=4"></script>`.

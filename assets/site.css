@@ -127,3 +127,10 @@ article li { margin: 4px 0; }
 .pager a.next { text-align: right; margin-left: auto; }
 .pager small { display: block; color: var(--muted); font-weight: 400; font-size: .82rem; }
 @media (max-width: 600px) { .pagehead .crumbs { display: none; } .pagehead h1 { font-size: 1.15rem; } .pagehead .wrap { padding-top: 6px; padding-bottom: 8px; } }
+
+/* the section list never moves: fixed beside the article on wide screens */
+@media (min-width: 821px) {
+  .paged .toc { position: static; max-height: none; overflow: visible; }
+  .paged .toc-in { position: fixed; top: calc(var(--head-h, 140px) + 20px); width: 220px; max-height: calc(100vh - var(--head-h, 140px) - 40px); overflow-y: auto; }
+  .paged footer .wrap { padding-left: calc(220px + 40px + var(--gutter, 16px)); }
+}

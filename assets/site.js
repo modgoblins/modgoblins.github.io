@@ -48,7 +48,7 @@
   });
   window.addEventListener('popstate', function () { fromHash(true); });
   window.addEventListener('resize', setVar);
-  window.addEventListener('load', setVar);
+  window.addEventListener('load', function () { setVar(); if (location.hash) fromHash(true); });
   document.documentElement.classList.add('paged');
   setVar();
   fromHash(false);
