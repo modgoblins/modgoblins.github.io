@@ -33,3 +33,7 @@ Mod folders: `NL-cluster-market` (Cluster Market).
 - `.table-wrap > table`: settings tables
 
 Never put mod code, passwords, webhook addresses or tokens in this repository; it is public.
+
+## Script
+
+`assets/site.js` highlights the current section in the "On this page" list of guide pages. Guide pages load it at the end of `<body>`: `<script src="../../assets/site.js?v=1"></script>`.
