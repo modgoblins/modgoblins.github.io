@@ -6,7 +6,8 @@
   var ticking = false;
   function mark() {
     ticking = false;
-    var cur = 0, line = 120;
+    var top = document.querySelector('.top');
+    var cur = 0, line = (top ? top.offsetHeight : 0) + 40;
     for (var i = 0; i < heads.length; i++) {
       if (heads[i] && heads[i].getBoundingClientRect().top <= line) cur = i;
     }

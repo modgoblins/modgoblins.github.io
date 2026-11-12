@@ -36,4 +36,4 @@ Never put mod code, passwords, webhook addresses or tokens in this repository; i
 
 ## Script
 
-`assets/site.js` highlights the current section in the "On this page" list of guide pages. Guide pages load it at the end of `<body>`: `<script src="../../assets/site.js?v=1"></script>`.
+`assets/site.js` highlights the current section in the "On this page" list of guide pages. Guide pages load it at the end of `<body>`: `<script src="../../assets/site.js?v=2"></script>`.

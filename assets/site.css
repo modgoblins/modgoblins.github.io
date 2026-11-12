@@ -25,7 +25,7 @@ img { max-width: 100%; height: auto; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
 
 /* top bar */
-.top { border-bottom: 1px solid var(--line); }
+.top { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; background: var(--bg); }
 .top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-top: 10px; padding-bottom: 10px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 1.1rem; }
 .brand img { width: 40px; height: 40px; display: block; }
@@ -70,10 +70,10 @@ main p, main li { max-width: 75ch; }
 
 /* guide layout: contents list + article */
 .guide { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: start; }
-.toc { position: sticky; top: 16px; font-size: .95rem; }
+.toc { position: sticky; top: 80px; font-size: .95rem; }
 .toc strong { display: block; padding: 0 0 6px 14px; border-left: 2px solid var(--line); }
 .toc ol { margin: 0; padding: 0; list-style: none; }
-.toc { max-height: calc(100vh - 32px); overflow-y: auto; }
+.toc { max-height: calc(100vh - 96px); overflow-y: auto; }
 .toc li { margin: 0; }
 .toc a { display: block; color: var(--muted); text-decoration: none; padding: 3px 0 3px 14px; border-left: 2px solid var(--line); }
 .toc a[aria-current] { color: var(--brass); border-left-color: var(--brass); font-weight: 600; }
@@ -102,7 +102,9 @@ footer a { color: var(--muted); }
 
 /* guide pages */
 article h2:first-child { margin-top: 0; }
-article h2 { scroll-margin-top: 16px; border-top: 1px solid var(--line); padding-top: 28px; }
+article h2, article h3 { scroll-margin-top: 76px; }
+@media (max-width: 600px) { article h2, article h3 { scroll-margin-top: 110px; } }
+article h2 { border-top: 1px solid var(--line); padding-top: 28px; }
 article h2:first-child { border-top: 0; padding-top: 0; }
 article ul { padding-left: 22px; }
 article li { margin: 4px 0; }
