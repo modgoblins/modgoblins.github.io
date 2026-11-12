@@ -9,7 +9,11 @@
   var article = document.querySelector('article');
 
   function headHeight() { return sticky ? sticky.offsetHeight : 0; }
-  function setVar() { document.documentElement.style.setProperty('--head-h', headHeight() + 'px'); }
+  function setVar() {
+    var root = document.documentElement.style, foot = document.querySelector('footer');
+    root.setProperty('--head-h', headHeight() + 'px');
+    if (foot) root.setProperty('--foot-h', foot.offsetHeight + 'px');
+  }
 
   function indexOf(id) {
     for (var i = 0; i < secs.length; i++) if (secs[i].id === id) return i;
