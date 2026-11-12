@@ -21,6 +21,7 @@ Mod folders: `NL-cluster-market` (Cluster Market).
 2. Add a `<li>` row for the mod to the `.mods` list in `index.html`.
 3. Put screenshots in `<mod-folder>/<guide>/img/` and reference them with relative paths.
 4. Keep links relative so the site keeps working on a custom domain.
+5. When `assets/site.css` changes, raise the `?v=` number on the stylesheet link in every page (browsers keep the old file otherwise).
 
 ## Page building blocks (see `assets/site.css`)
 
