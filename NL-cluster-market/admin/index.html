@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cluster Market Admin guide — Mod Goblins Wiki</title>
-<meta name="description" content="Cluster Market Admin guide.">
+<meta name="description" content="How to set up and run Cluster Market on your server: roles, economy, rewards, logs, backups and Discord.">
 <link rel="icon" href="../../assets/favicon.png">
-<link rel="stylesheet" href="../../assets/site.css?v=3">
+<link rel="stylesheet" href="../../assets/site.css?v=4">
 </head>
 <body>
 <header class="top">
@@ -21,7 +21,238 @@
 <main class="wrap">
   <p class="crumbs"><a href="../../">All mods</a> / <a href="../">Cluster Market</a> / Admin guide</p>
   <h1>Cluster Market — Admin guide</h1>
-  <div class="note"><p>This guide is being written. Until it is ready, ask in the Cluster Market area of the <a href="https://discord.gg/modgoblins">Mod Goblins Discord</a>.</p></div>
+  <p class="lead">How to set up and run the market on your server. Everything is done in game, on the Admin and Owner pages of the market window.</p>
+  <div class="note"><p>The cluster chapter (several maps sharing one market) will be added here soon. Everything below also applies to a single server.</p></div>
+  <div class="guide">
+    <nav class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+      <li><a href="#setup">First setup</a></li>
+      <li><a href="#roles">Roles and admin permissions</a></li>
+      <li><a href="#general">General settings</a></li>
+      <li><a href="#economy">Economy</a></li>
+      <li><a href="#income">Online income</a></li>
+      <li><a href="#ticker">Ticker</a></li>
+      <li><a href="#rules">Item rules and price limits</a></li>
+      <li><a href="#locked">Locked tribes</a></li>
+      <li><a href="#creator">Creator</a></li>
+      <li><a href="#rewards">Rewards</a></li>
+      <li><a href="#logs">Logs</a></li>
+      <li><a href="#freeze">Freeze</a></li>
+      <li><a href="#tools">Admin log cleanup and season wipe</a></li>
+      <li><a href="#backup">Backup and restore</a></li>
+      <li><a href="#discord">Discord webhooks</a></li>
+      <li><a href="#support">Diagnostics and support</a></li>
+      </ol>
+    </nav>
+    <article>
+    <h2 id="setup">First setup</h2>
+    <p>The mod needs an owner before players can use it. Until then the market window shows <strong>NOT SET UP YET</strong>.</p>
+    <ol class="steps">
+      <li>Log in as ARK admin on the server (<code>enablecheats</code>).</li>
+      <li>Open the market from your radial wheel.</li>
+      <li>Press <strong>Generate code</strong>. Your owner code is shown only to you.</li>
+      <li>Type the code into the box and press <strong>Take ownership</strong>.</li>
+    </ol>
+    <p>The first admin who enters a code becomes the owner. In single player and on a non-dedicated server the host is the owner automatically.</p>    <figure><a href="../img/owner-ownership.webp"><img src="../img/owner-ownership.webp" alt="Owner page, Ownership tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Ownership: the owner code is hidden until you press Show.</figcaption></figure>
+    <p>Keep the owner code private. You need it to hand over the ownership, to recover it, and for the dangerous actions on the Owner page. <strong>Generate new owner code</strong> makes a new one; the old code keeps working until you activate the new one.</p>
+    <h2 id="roles">Roles and admin permissions</h2>
+    <figure><a href="../img/owner-roles.webp"><img src="../img/owner-roles.webp" alt="Owner page, Roles tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Roles: players on the left, admin permissions on the right.</figcaption></figure>
+    <div class="table-wrap"><table>
+      <tr><th>Role</th><th>Can do</th></tr>
+      <tr><td>Owner</td><td>Everything, including the Owner page.</td></tr>
+      <tr><td>Co-owner</td><td>Everything the owner can, except seeing the owner code, handing over the ownership and naming co-owners.</td></tr>
+      <tr><td>Admin</td><td>Only the Admin tabs you allow.</td></tr>
+    </table></div>
+    <ol class="steps">
+      <li>Open <strong>Owner → Roles</strong>.</li>
+      <li>Find the player with the search box or the Online / Offline and map filters, and click the row.</li>
+      <li>Press <strong>Player</strong>, <strong>Admin</strong> or <strong>Co-owner</strong>.</li>
+      <li>For an admin, tick the tabs they may use in the <strong>Permissions</strong> card and save.</li>
+    </ol>
+    <ul>
+      <li>Being an ARK admin does not make someone a market admin. You add them here.</li>
+      <li>Every permission is one Admin tab. A new admin gets a copy of <strong>Default permissions</strong>; all of them are off until you turn them on.</li>
+      <li>An admin does not see the tabs they have no permission for.</li>
+      <li>Roles belong to the player's account, so they apply to every character of that player.</li>
+      <li><strong>Transfer ownership</strong> hands the market to an online ARK admin. They confirm with the owner code.</li>
+    </ul>
+    <p>By default, owners and admins see the Admin and Owner pages only while they are logged in as ARK admin. You can turn this off with <strong>Require ARK admin login</strong> in Admin → General.</p>
+    <h2 id="general">General settings</h2>
+    <figure><a href="../img/admin-general.webp"><img src="../img/admin-general.webp" alt="Admin page, General tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → General. A changed field turns on Save changes at the bottom.</figcaption></figure>
+    <div class="table-wrap"><table>
+      <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+      <tr><td>Duration (hours)</td><td>How long a new listing stays open. Open listings keep their time.</td><td>72</td></tr>
+      <tr><td>Active listings per tribe</td><td>How many listings a tribe can have open at once.</td><td>20</td></tr>
+      <tr><td>Sales tax %</td><td>Taken from the seller on every sale. It leaves the economy.</td><td>5</td></tr>
+      <tr><td>Keep items (days)</td><td>How long items wait in Claim before they are deleted.</td><td>30</td></tr>
+      <tr><td>Warn before deletion (days)</td><td>Players are warned this many days before.</td><td>3</td></tr>
+      <tr><td>Sending money</td><td>Lets players send currency to another tribe or player.</td><td>On</td></tr>
+      <tr><td>Personal wallets</td><td>Off: everything uses the tribe wallet.</td><td>On</td></tr>
+      <tr><td>Tribe Log (days)</td><td>Older Tribe Log entries are removed.</td><td>10</td></tr>
+      <tr><td>Owner absence (days)</td><td>After this time without the owner, ARK admins may take the ownership with the owner code.</td><td>30</td></tr>
+      <tr><td>Require ARK admin login</td><td>Owners and admins use the Admin and Owner pages only while logged in as ARK admin.</td><td>On</td></tr>
+    </table></div>
+    <p>Settings apply as soon as you save. Players do not need to reopen the window.</p>
+    <h2 id="economy">Economy</h2>
+    <figure><a href="../img/admin-economy.webp"><img src="../img/admin-economy.webp" alt="Admin page, Economy tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Economy: currencies on the left, exchange, withdraw and listing fee on the right.</figcaption></figure>
+    <h3>Currencies</h3>
+    <p>There is one main currency and up to two more. For each one you set:</p>
+    <ul>
+      <li><strong>Name:</strong> shown everywhere in the market.</li>
+      <li><strong>Type:</strong> <em>Item</em> means players can deposit and withdraw an item. <em>Digital</em> means it is only a balance.</li>
+      <li><strong>Item class:</strong> the item behind the currency. Leave it empty to use the mod's own Gold, Silver and Bronze coins, or press <strong>Choose</strong> to pick any item.</li>
+      <li><strong>Enabled</strong> (second and third currency): off hides the currency and it cannot be used for new listings.</li>
+    </ul>
+    <p>Currency items cannot be listed for sale.</p>
+    <h3>Exchange, withdraw and listing fee</h3>
+    <ul>
+      <li><strong>Exchange:</strong> how many coins of the second and third currency one main coin is worth. 0 means no exchange.</li>
+      <li><strong>Withdraw fee %</strong> and <strong>daily limit:</strong> kept from every withdrawal, and how much a wallet may withdraw per day. 0 means no limit.</li>
+      <li><strong>Listing fee %:</strong> paid when an item is listed, from the wallet it is listed as. It is never refunded. 0 turns it off.</li>
+    </ul>
+    <h2 id="income">Online income</h2>
+    <figure><a href="../img/admin-income.webp"><img src="../img/admin-income.webp" alt="Admin page, Income tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Income.</figcaption></figure>
+    <p>Pays players for the time they actively play.</p>
+    <ul>
+      <li><strong>Amount per payment</strong>, <strong>Active seconds</strong> needed for one payment, and a <strong>Daily limit</strong> per player (0 means no limit).</li>
+      <li><strong>Currency</strong> and <strong>Paid into</strong>: the personal wallet or the tribe wallet.</li>
+      <li><strong>AFK check:</strong> standing still pauses the income after the time you set. Players see an "Income paused" notice until they move.</li>
+    </ul>
+    <h2 id="ticker">Ticker</h2>
+    <figure><a href="../img/admin-ticker.webp"><img src="../img/admin-ticker.webp" alt="Admin page, Ticker tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Ticker: your message, its look, and the automatic news.</figcaption></figure>
+    <p>The ticker is the line that scrolls at the top of every page.</p>
+    <ul>
+      <li>Write your message, pick a colour, an effect and a speed. The preview shows the result.</li>
+      <li><strong>Automatic news</strong> adds lines for new listings, new rewards and market status changes. Players can click a news line to open that listing or page.</li>
+      <li><strong>Publish ticker</strong> shows it to everyone. <strong>Clear ticker</strong> removes it.</li>
+    </ul>
+    <h2 id="rules">Item rules and price limits</h2>
+    <figure><a href="../img/admin-item-rules.webp"><img src="../img/admin-item-rules.webp" alt="Admin page, Item rules tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Item rules: banned entries.</figcaption></figure>
+    <h3>Banned items</h3>
+    <p>An item cannot be listed if its name or class path contains one of the entries. Add a word (for example <code>Admin</code>), a full class path, or press <strong>Choose item</strong>. On the Sell page, admins also see a <strong>Ban this item</strong> button.</p>
+    <figure><a href="../img/admin-price-limits.webp"><img src="../img/admin-price-limits.webp" alt="Admin page, Price limits tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Price limits: lowest and highest price for each currency.</figcaption></figure>
+    <h3>Price limits</h3>
+    <ol class="steps">
+      <li>Press <strong>Add item</strong> and pick the item, or select it in the list.</li>
+      <li>Type the lowest and highest price for each currency, or leave <strong>No limit</strong> on.</li>
+      <li>Press <strong>Save limits</strong>.</li>
+    </ol>
+    <p>Setting the same lowest and highest price gives a fixed price. For cryopods the limit is set per creature species.</p>
+    <h2 id="locked">Locked tribes</h2>
+    <figure><a href="../img/admin-locked-tribes.webp"><img src="../img/admin-locked-tribes.webp" alt="Admin page, Locked tribes tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Locked tribes.</figcaption></figure>
+    <p>When a tribe is disbanded, its wallet, listings and waiting items normally go to its last owner. If the market does not know who that was, the tribe's assets wait here. Choose the tribe, then give everything to a player or delete it.</p>
+    <h2 id="creator">Creator</h2>
+    <figure><a href="../img/admin-creator.webp"><img src="../img/admin-creator.webp" alt="Admin page, Creator tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Creator: pick an item or creature on the left, set it up in the middle, give it on the right.</figcaption></figure>
+    <p>The Creator makes exact items and creatures and gives them away. Every gift is written to the admin log, and admins are told when the player claims it.</p>
+    <ul>
+      <li><strong>Items:</strong> quantity, quality tier or an exact quality number, blueprint, custom name and stat overrides. Items from other mods are in the list too; <strong>Reload</strong> rescans them.</li>
+      <li><strong>Creatures:</strong> level, exact stat points, gender, colours, traits, imprint and saddle. Delivered in a cryopod, or as a fertilized egg for species that lay eggs.</li>
+      <li><strong>Bundle:</strong> several items, with coins if you like, saved under one name and icon.</li>
+      <li><strong>Saved:</strong> your saved definitions and bundles. Rewards use them too.</li>
+    </ul>
+    <h3>Give</h3>
+    <ol class="steps">
+      <li>Pick who gets it: <strong>Me</strong>, <strong>Player</strong>, <strong>Tribe</strong> or <strong>Everyone</strong>.</li>
+      <li>Set <strong>Times</strong> and, if you want, coins.</li>
+      <li>Press <strong>Give</strong>.</li>
+    </ol>
+    <p>Gifts to other players arrive in their Claim. <strong>Me</strong> puts the item straight into your inventory.</p>
+    <div class="note"><p>A player appears in the list only after they have opened the market once on this server. If someone is missing, ask them to open it, then leave the Creator tab and come back.</p></div>
+    <p>Admins with the Creator permission also see a <strong>CLONE</strong> button in item details. It puts an exact copy of that item into your inventory; the listing is not changed.</p>
+    <h2 id="rewards">Rewards</h2>
+    <figure><a href="../img/admin-rewards.webp"><img src="../img/admin-rewards.webp" alt="Admin page, Rewards tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Rewards: one form for Black Market, Giveaways and Starter kits.</figcaption></figure>
+    <p>Pick <strong>Black Market</strong>, <strong>Giveaways</strong> or <strong>Starter kits</strong> at the top left, fill in the offer and publish it. Players find it on the page with the same name, and what they take goes to their Claim.</p>
+    <ul>
+      <li><strong>Contents:</strong> add a saved definition or bundle (<strong>+ Saved</strong>), single items (<strong>+ Item</strong>) and coins.</li>
+      <li><strong>Turn in</strong> (giveaways): items the player must hand in. They can bring them in parts; handed-in items are deleted.</li>
+      <li><strong>For:</strong> one player, one tribe, or everyone.</li>
+      <li><strong>Price:</strong> required for the Black Market, optional for giveaways.</li>
+      <li><strong>Stock:</strong> unlimited or a number, with <strong>Hide it when sold out</strong>.</li>
+      <li><strong>Limit:</strong> how many times per player or per tribe, and <strong>Again after</strong> a number of hours.</li>
+      <li><strong>Time:</strong> start later and stay open for a number of hours.</li>
+      <li><strong>Level</strong> range, and <strong>Only new players</strong>, counted from the player's first visit to the market.</li>
+      <li><strong>Tell everyone online:</strong> sends a message when you publish.</li>
+    </ul>
+    <figure><a href="../img/admin-rewards-2.webp"><img src="../img/admin-rewards-2.webp" alt="Rewards tab scrolled down" width="1600" height="930" loading="lazy"></a><figcaption>Further down: the publish button and the Black Market rotation.</figcaption></figure>
+    <p><strong>Black Market rotation</strong> shows players only a random part of your offers and changes it on a timer. Set how often it changes and how many offers are shown.</p>
+    <p>To change a published offer, click it in the list; it loads into the form. Offers that players cannot see right now are marked for you with the reason.</p>
+    <h2 id="logs">Logs</h2>
+    <figure><a href="../img/admin-logs.webp"><img src="../img/admin-logs.webp" alt="Admin page, Logs tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Logs.</figcaption></figure>
+    <p>The admin log keeps every sale, purchase, wallet movement, gift and admin action.</p>
+    <ul>
+      <li><strong>Show</strong> filters by who (tribes, players, admins, owners) and <strong>Type</strong> by what (market, wallet, tribe, admin). The search box looks in all columns.</li>
+      <li>Underlined item names show their details on hover. Click the line to see the full item list.</li>
+      <li><strong>Export</strong> writes what you see to a file on your computer and shows the path.</li>
+    </ul>
+    <h2 id="freeze">Freeze</h2>
+    <figure><a href="../img/owner-freeze.webp"><img src="../img/owner-freeze.webp" alt="Owner page, Freeze tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Freeze.</figcaption></figure>
+    <p>Freezing pauses all trading. Players cannot buy, sell or move money, and listing time stops. They can still open the market and take their items from Claim. Admins can still trade.</p>
+    <ol class="steps">
+      <li>Open <strong>Owner → Freeze</strong>.</li>
+      <li>Write the reason. Players see it at the top of every page.</li>
+      <li>Press <strong>Freeze the market</strong> and confirm with your owner code.</li>
+    </ol>
+    <p>Only the owner and co-owners can freeze or unfreeze.</p>
+    <h2 id="tools">Admin log cleanup and season wipe</h2>
+    <figure><a href="../img/owner-tools.webp"><img src="../img/owner-tools.webp" alt="Owner page, Owner tools tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Owner tools.</figcaption></figure>
+    <h3>Admin log</h3>
+    <p>Set how many days the admin log is kept. <strong>Clear admin log</strong> needs the owner code and cannot be undone; one line stays to say who cleared it.</p>
+    <h3>Season wipe</h3>
+    <p>Starts a new season. Tick the parts you want to reset:</p>
+    <ul>
+      <li><strong>Listings:</strong> go back to their sellers' Claim.</li>
+      <li><strong>Claim areas:</strong> deletes every waiting item. If you tick this, listed items are deleted too instead of going back.</li>
+      <li><strong>Wallets and history</strong>, <strong>Published offers</strong>, <strong>Creator Saved</strong>, <strong>Notifications</strong>, <strong>Giveaway / kit takers</strong>, <strong>Tribe Logs</strong>.</li>
+    </ul>
+    <p>Type your owner code and the word <code>WIPE</code>, then press <strong>Wipe the season</strong>. A backup is made first. Settings, the admin log and roles always stay, and players' ARK inventories are not touched.</p>
+    <h2 id="backup">Backup and restore</h2>
+    <figure><a href="../img/owner-backup.webp"><img src="../img/owner-backup.webp" alt="Owner page, Backup tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Backup.</figcaption></figure>
+    <ul>
+      <li><strong>Create backup</strong> saves the whole market. You can add a note.</li>
+      <li><strong>Automatic backup every (hours)</strong> makes one on a timer. 0 turns it off.</li>
+      <li>Up to 20 backups are kept. When the list is full the oldest automatic one goes first. Manual backups stay until you delete them.</li>
+      <li>A backup is also made before every season wipe and every restore.</li>
+    </ul>
+    <h3>Restore</h3>
+    <ol class="steps">
+      <li>Select the backup in the list.</li>
+      <li>Type your owner code and the word <code>RESTORE</code>.</li>
+      <li>Press <strong>Restore this backup</strong>.</li>
+    </ol>
+    <p>Listings, Claim areas, wallets, offers, Creator Saved, settings, notifications and Tribe Logs go back to that moment. The owner, roles, codes and the admin log stay as they are now. Listings opened and items claimed after the backup are not lost; they go to their owners' Claim.</p>
+    <h2 id="discord">Discord webhooks</h2>
+    <figure><a href="../img/owner-webhook.webp"><img src="../img/owner-webhook.webp" alt="Owner page, Webhook tab" width="1600" height="930" loading="lazy"></a><figcaption>Owner → Webhook: setup steps on the left, one address box per feed on the right.</figcaption></figure>
+    <p>The market can post to your Discord server. Each feed has its own box, so each one can go to its own channel.</p>
+    <ol class="steps">
+      <li>In Discord, create a text channel for every feed you want.</li>
+      <li>Open the channel settings: <strong>Integrations → Webhooks → New Webhook → Copy Webhook URL</strong>.</li>
+      <li>In the market, open <strong>Owner → Webhook</strong>, paste the address into the feed's box and press <strong>Test</strong>.</li>
+      <li>Press <strong>Save</strong>.</li>
+    </ol>
+    <div class="table-wrap"><table>
+      <tr><th>Feed</th><th>Posts</th></tr>
+      <tr><td>New listings</td><td>Every new listing. You can set a price from which listings are posted.</td></tr>
+      <tr><td>Sales</td><td>Item, price, seller and buyer.</td></tr>
+      <tr><td>Rewards</td><td>New Black Market offers, Giveaways and Starter Kits.</td></tr>
+      <tr><td>Economy summary</td><td>One message a day or a week: sales, volume, top tribes and items.</td></tr>
+      <tr><td>Admin log</td><td>The admin actions you tick under Admin log types. Use a private staff channel.</td></tr>
+      <tr><td>Errors</td><td>Server errors and messages Discord did not take. Use a private staff channel.</td></tr>
+      <tr><td>Announcements</td><td>The message you publish in Admin → Ticker.</td></tr>
+    </table></div>
+    <p>An empty box turns that feed off. The same address can be used for several feeds. Addresses are hidden on the page until you press <strong>Show</strong>, and only the owner and co-owners see this tab.</p>
+    <h2 id="support">Diagnostics and support</h2>
+    <figure><a href="../img/admin-diagnostics.webp"><img src="../img/admin-diagnostics.webp" alt="Admin page, Diagnostics tab" width="1600" height="930" loading="lazy"></a><figcaption>Admin → Diagnostics.</figcaption></figure>
+    <p>When something goes wrong, send us a diagnostics file. It holds the recent market events and errors of your server. It does not contain your owner code or webhook addresses.</p>
+    <ol class="steps">
+      <li>Right after the problem, open <strong>Admin → Diagnostics</strong> and press <strong>Create diagnostics</strong>.</li>
+      <li>Press <strong>Upload</strong> on the new line and confirm.</li>
+      <li>Press <strong>Link</strong>, then <strong>Copy</strong>.</li>
+      <li>Open a ticket in the Cluster Market area of the <a href="https://discord.gg/modgoblins">Mod Goblins Discord</a>, paste the link and describe what you did, what you expected and what happened.</li>
+    </ol>
+    <p>The six newest files are kept. Admins need the Diagnostics permission to see this tab.</p>
+    </article>
+  </div>
 </main>
 <footer>
   <div class="wrap">

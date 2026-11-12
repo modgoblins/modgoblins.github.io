@@ -82,9 +82,11 @@ main p, main li { max-width: 75ch; }
 .note { background: var(--note); border: 1px solid var(--note-line); border-radius: 6px; padding: 12px 16px; margin: 16px 0; }
 .note p { margin: 0; }
 code, kbd { background: var(--code); border-radius: 4px; padding: 1px 6px; font: .92em ui-monospace, Consolas, monospace; }
-figure { margin: 18px 0; }
-figure img { border: 1px solid var(--line); border-radius: 6px; display: block; }
-figcaption { color: var(--muted); font-size: .9rem; margin-top: 6px; }
+figure { margin: 22px 0; padding: 10px 10px 0; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--brass); border-radius: 8px; }
+figure a { display: block; cursor: zoom-in; }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { color: var(--muted); font-size: .9rem; padding: 9px 4px 10px; }
+@media (max-width: 600px) { figure { padding: 6px 6px 0; margin-left: -6px; margin-right: -6px; } }
 .steps { padding-left: 22px; }
 .steps li { margin: 6px 0; }
 .table-wrap { overflow-x: auto; }
@@ -95,3 +97,11 @@ th { color: var(--muted); font-size: .88rem; }
 footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
 footer .wrap { padding-top: 18px; padding-bottom: 28px; display: flex; flex-wrap: wrap; gap: 6px 20px; }
 footer a { color: var(--muted); }
+
+/* guide pages */
+article h2:first-child { margin-top: 0; }
+article h2 { scroll-margin-top: 16px; border-top: 1px solid var(--line); padding-top: 28px; }
+article h2:first-child { border-top: 0; padding-top: 0; }
+article ul { padding-left: 22px; }
+article li { margin: 4px 0; }
+.guide { margin-top: 28px; }

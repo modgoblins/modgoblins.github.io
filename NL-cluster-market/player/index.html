@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cluster Market Player guide — Mod Goblins Wiki</title>
-<meta name="description" content="Cluster Market Player guide.">
+<meta name="description" content="How to use Cluster Market as a player: buy, sell, claim, wallet and tribe.">
 <link rel="icon" href="../../assets/favicon.png">
-<link rel="stylesheet" href="../../assets/site.css?v=3">
+<link rel="stylesheet" href="../../assets/site.css?v=4">
 </head>
 <body>
 <header class="top">
@@ -21,7 +21,127 @@
 <main class="wrap">
   <p class="crumbs"><a href="../../">All mods</a> / <a href="../">Cluster Market</a> / Player guide</p>
   <h1>Cluster Market — Player guide</h1>
-  <div class="note"><p>This guide is being written. Until it is ready, ask in the Cluster Market area of the <a href="https://discord.gg/modgoblins">Mod Goblins Discord</a>.</p></div>
+  <p class="lead">How to buy, sell and collect your items. Everything happens in one window that you open from your radial wheel.</p>
+
+  <div class="guide">
+    <nav class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+      <li><a href="#open">Open the market</a></li>
+      <li><a href="#window">The window</a></li>
+      <li><a href="#buy">Buy</a></li>
+      <li><a href="#sell">Sell</a></li>
+      <li><a href="#listings">My Listings</a></li>
+      <li><a href="#claim">Claim</a></li>
+      <li><a href="#wallet">Wallet</a></li>
+      <li><a href="#tribe">Tribe</a></li>
+      <li><a href="#rewards">Black Market, Giveaways and Starter Kits</a></li>
+      <li><a href="#leave">If you leave your tribe</a></li>
+      <li><a href="#pad">Gamepad</a></li>
+      </ol>
+    </nav>
+    <article>
+    <h2 id="open">Open the market</h2>
+    <ol class="steps">
+      <li>Hold your radial wheel key (the same wheel you use for emotes and whistles).</li>
+      <li>Pick the <strong>Cluster Market</strong> entry.</li>
+    </ol>
+    <p>You need to be in a tribe. A tribe of one is fine. Without a tribe you see a short notice instead of the market.</p>
+    <p>If the server owner has frozen the market you can still open it and take your items from <strong>Claim</strong>, but buying and selling are paused. The reason is shown in a red line at the top.</p>
+    <h2 id="window">The window</h2>
+    <ul>
+      <li><strong>Menu on the left:</strong> Market, Sell, My Listings, Claim, Wallet, Black Market, Giveaways, Starter Kits and Tribe.</li>
+      <li><strong>Top bar:</strong> your tribe's balances and your own balances, one number per currency.</li>
+      <li><strong>Bell:</strong> your notifications. A number shows how many are unread.</li>
+      <li><strong>Warning sign:</strong> things you should know about, for example items that will soon be removed from Claim.</li>
+      <li><strong>Bottom bar:</strong> interface size (S, M, L, XL), <strong>Reduce animations</strong> and <strong>Flip cards on hover</strong>. These are your own settings.</li>
+    </ul>
+    <h2 id="buy">Buy</h2>
+    <figure><a href="../img/market.webp"><img src="../img/market.webp" alt="The Market page with two listings" width="1600" height="930" loading="lazy"></a><figcaption>Market: search and filters at the top, one card per listing.</figcaption></figure>
+    <ol class="steps">
+      <li>Open <strong>Market</strong>. Use the search box, the category row, and the currency, sort, quality and seller filters to find what you want.</li>
+      <li>Hover a card to preview it. Click it to pin its details on the right.</li>
+      <li>For a stack, choose the quantity. You can buy only part of a stack.</li>
+      <li>Choose <strong>Pay from</strong>: your personal wallet or the tribe wallet.</li>
+      <li>Press <strong>Buy</strong> and confirm.</li>
+    </ol>
+    <p>What you buy never drops straight into your inventory. It waits in <strong>Claim</strong>.</p>
+    <p>You cannot buy your own listing or a listing of your own tribe. Those cards are marked <strong>YOUR LISTING</strong> or <strong>YOUR TRIBE LISTING</strong>.</p>
+    <h3>Reading a creature card</h3>
+    <p>Creatures are sold inside cryopods. The card shows the species, level and gender, the six colour regions, maternal and paternal mutations, and the points in each stat. The details panel adds traits, the saddle and the full stat list.</p>
+    <h2 id="sell">Sell</h2>
+    <figure><a href="../img/sell.webp"><img src="../img/sell.webp" alt="The Sell page showing the items in the inventory" width="1600" height="930" loading="lazy"></a><figcaption>Sell: the items in your inventory that can be listed.</figcaption></figure>
+    <ol class="steps">
+      <li>Open <strong>Sell</strong>. It shows the items in your inventory that can be listed.</li>
+      <li>Click the item.</li>
+      <li>Set the quantity, the price for one piece and the currency.</li>
+      <li>Choose <strong>List as</strong>: personal (the money goes to your wallet) or tribe (the money goes to the tribe wallet).</li>
+      <li>Check the summary: listing fee, sales tax and what you receive. Press <strong>List</strong> and confirm.</li>
+    </ol>
+    <p>The item leaves your inventory when it is listed. If it does not sell before the listing ends, it comes back to Claim.</p>
+    <ul>
+      <li>Some items cannot be listed: currency coins, items the admins have banned, and items that cannot leave your inventory.</li>
+      <li>Admins can set a lowest and highest price for an item. The form shows the allowed range.</li>
+      <li>A cryopod marked <strong>LEVELS NOT READ</strong> holds a creature that was stored before the mod was installed. Click it and press <strong>Read creature levels</strong> once, then it can be listed.</li>
+    </ul>
+    <h2 id="listings">My Listings</h2>
+    <figure><a href="../img/my-listings.webp"><img src="../img/my-listings.webp" alt="The My Listings page" width="1600" height="930" loading="lazy"></a><figcaption>My Listings: Active, Sold, Cancelled and Expired.</figcaption></figure>
+    <p>Your listings and your tribe's listings, in four tabs: <strong>Active</strong>, <strong>Sold</strong>, <strong>Cancelled</strong> and <strong>Expired</strong>.</p>
+    <p>To take a listing down, click it and press <strong>Cancel</strong>. The item goes to Claim. Cancelling a tribe listing needs the Cancel permission in your tribe.</p>
+    <h2 id="claim">Claim</h2>
+    <figure><a href="../img/claim.webp"><img src="../img/claim.webp" alt="The Claim page with one waiting item" width="1600" height="930" loading="lazy"></a><figcaption>Claim: each card shows how long the item will wait.</figcaption></figure>
+    <p>Everything you receive waits here: purchases, cancelled and expired listings, rewards, admin gifts and withdrawn coins.</p>
+    <ol class="steps">
+      <li>Open <strong>Claim</strong>.</li>
+      <li>Click the item and press <strong>Claim</strong>.</li>
+    </ol>
+    <ul>
+      <li>Items wait for a limited time, 30 days unless your server changed it. The card shows the time left, and you get a warning before the end.</li>
+      <li>If your inventory is full the item stays in Claim.</li>
+      <li>Tribe items can be claimed by tribe members with the Claim permission. Personal items only by you.</li>
+    </ul>
+    <h2 id="wallet">Wallet</h2>
+    <figure><a href="../img/wallet.webp"><img src="../img/wallet.webp" alt="The Wallet page" width="1600" height="930" loading="lazy"></a><figcaption>Wallet: balances on the left, actions on the right.</figcaption></figure>
+    <p>You have two wallets: the <strong>tribe wallet</strong>, shared with your tribe, and your <strong>personal wallet</strong>. Pick one at the top of the right side; the boxes below work on the wallet you picked.</p>
+    <ul>
+      <li><strong>Deposit coins:</strong> turn coin items from your inventory into wallet balance.</li>
+      <li><strong>Withdraw coins:</strong> turn balance back into coin items. They arrive in Claim. Your server may take a fee or set a daily limit.</li>
+      <li><strong>Exchange:</strong> swap one currency for another, if your server has set a rate.</li>
+      <li><strong>Send:</strong> send currency to another tribe or player.</li>
+    </ul>
+    <p>Some servers pay <strong>online income</strong> for time you spend actively playing. The Wallet page shows the amount and a countdown to the next payment. If you stand still for too long the income pauses and a notice tells you to move.</p>
+    <p>Using the tribe wallet needs permission from your tribe owner. Depositing is always allowed.</p>
+    <h2 id="tribe">Tribe</h2>
+    <figure><a href="../img/tribe.webp"><img src="../img/tribe.webp" alt="The Tribe page" width="1600" height="930" loading="lazy"></a><figcaption>Tribe: members, your permissions, the Tribe Log and settings.</figcaption></figure>
+    <ul>
+      <li><strong>Members:</strong> who is in the tribe, their role and whether they are online. Your own permissions are listed on the right.</li>
+      <li><strong>Tribe Log:</strong> who bought, sold, claimed or moved money, with filters and search.</li>
+      <li><strong>Settings:</strong> the tribe owner decides what each member may do with tribe money and items: Spend, List, Cancel, Withdraw, Exchange, Transfer, Claim, View log and Manage permissions.</li>
+    </ul>
+    <p>New members start with the tribe's default permissions. Personal wallet, personal listings and personal claims never need a permission.</p>
+    <h2 id="rewards">Black Market, Giveaways and Starter Kits</h2>
+    <p>These pages are filled by your server's admins.</p>
+    <ul>
+      <li><strong>Black Market:</strong> special offers at a fixed price. Stock can be limited and the offers can change on a timer.</li>
+      <li><strong>Giveaways:</strong> rewards that are free, cost currency, or ask you to hand in items. For a hand-in giveaway you can bring the items in several visits; the page shows your progress.</li>
+      <li><strong>Starter Kits:</strong> kits you can take once, or again after a waiting time. Some need a minimum level.</li>
+    </ul>
+    <p>Everything you take from these pages goes to Claim.</p>
+    <h2 id="leave">If you leave your tribe</h2>
+    <ul>
+      <li>Your personal listings are cancelled and the items go to your personal Claim.</li>
+      <li>Your personal wallet stays yours.</li>
+      <li>While you have no tribe, a box on your screen reminds you that items are waiting. Join or create a tribe, open the market, and claim them.</li>
+      <li>If a tribe is disbanded, its wallet, listings and waiting items go to the last tribe owner.</li>
+    </ul>
+    <h2 id="pad">Gamepad</h2>
+    <ul>
+      <li>Move with the left stick or the D-pad, confirm with <kbd>A</kbd>, close with <kbd>B</kbd>.</li>
+      <li><kbd>LB</kbd> and <kbd>RB</kbd> switch between pages.</li>
+      <li>The right stick scrolls. <kbd>Y</kbd> flips an item card to show its back side.</li>
+    </ul>
+    </article>
+  </div>
 </main>
 <footer>
   <div class="wrap">
