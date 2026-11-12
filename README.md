@@ -1,6 +1,6 @@
 # Mod Goblins Wiki
 
-Source of https://modgoblins.github.io/ (GitHub Pages, `main` branch, root). Plain HTML and one shared stylesheet; no build step, no external files.
+Source of https://modgoblins.wiki/ (custom domain set in the `CNAME` file; GitHub Pages, `main` branch, root). Plain HTML and one shared stylesheet; no build step, no external files.
 
 ## Layout
 
