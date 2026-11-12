@@ -5,7 +5,7 @@ Source of https://modgoblins.github.io/ (GitHub Pages, `main` branch, root). Pla
 ## Layout
 
 ```
-index.html                 home: one row per mod
+index.html                 home: one card per mod
 assets/site.css            shared styles (light and dark, Mod Goblins colours)
 assets/mg-icon.png, mg-logo.webp, favicon.png   brand images
 <mod-folder>/index.html    mod page: links to its guides
@@ -18,7 +18,7 @@ Mod folders: `NL-cluster-market` (Cluster Market).
 ## Adding a mod
 
 1. Copy `NL-cluster-market/` to a new folder named after the mod and edit the three pages.
-2. Add a `<li>` row for the mod to the `.mods` list in `index.html`.
+2. Add a `<li>` card for the mod to the `.mods` list in `index.html`.
 3. Put screenshots in `<mod-folder>/<guide>/img/` and reference them with relative paths.
 4. Keep links relative so the site keeps working on a custom domain.
 5. When `assets/site.css` changes, raise the `?v=` number on the stylesheet link in every page (browsers keep the old file otherwise).
